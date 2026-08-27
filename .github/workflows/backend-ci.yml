@@ -23,6 +23,8 @@ jobs:
         run: pip install pipenv
       - name: Install dependencies
         run: pipenv install
+      - name: Activate pipenv shell
+        run: pipenv shell
       - name: Lint
         run: pipenv run lint
   test:
@@ -41,6 +43,8 @@ jobs:
         run: pip install pipenv
       - name: Install dependencies
         run: pipenv install
+      - name: Activate pipenv shell
+        run: pipenv shell
       - name: Test
         run: pipenv run test
   build:
@@ -52,13 +56,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.10'
-      - name: Install pipenv
-        run: pip install pipenv
-      - name: Install dependencies
-        run: pipenv install
       - name: Build
         run: docker build -t mp-backend:latest .
