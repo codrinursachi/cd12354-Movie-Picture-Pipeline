@@ -9,6 +9,9 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -22,6 +25,9 @@ jobs:
         run: npm run lint
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -36,6 +42,9 @@ jobs:
   build:
     needs: [lint, test]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/frontend
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
